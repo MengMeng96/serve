@@ -82,7 +82,7 @@ class BuildFrontEnd(setuptools.command.build_py.build_py):
             rmtree('build/lib/')
 
         try:
-            res = subprocess.check_call(' ./frontend/gradlew.bat -p frontend clean build', shell=True)
+            res = subprocess.check_call('./frontend/gradlew.bat -p frontend clean build', shell=True)
             print(res)
         except OSError:
             assert 0, "build failed"
