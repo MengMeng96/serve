@@ -53,7 +53,7 @@ public class ConfigManagerTest {
         ConfigManager configManager = ConfigManager.getInstance();
         configManager.setProperty("keystore", "src/test/resources/keystore.p12");
         Assert.assertEquals("true", configManager.getEnableEnvVarsConfig());
-        Assert.assertEquals(130, configManager.getDefaultResponseTimeout());
+        Assert.assertEquals(120, configManager.getDefaultResponseTimeout());
 
         Dimension dimension;
         List<Metric> metrics = new ArrayList<>();

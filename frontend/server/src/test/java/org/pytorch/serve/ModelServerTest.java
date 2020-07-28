@@ -75,16 +75,16 @@ public class ModelServerTest {
         String version = configManager.getProperty("version", null);
         try (InputStream is = new FileInputStream("src/test/resources/inference_open_api.json")) {
             listInferenceApisResult =
-                    String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version);
+                    String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version).replaceAll("(\r\n|\r|\n|\n\r)", "\n");
         }
 
         try (InputStream is = new FileInputStream("src/test/resources/management_open_api.json")) {
             listManagementApisResult =
-                    String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version);
+                    String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version).replaceAll("(\r\n|\r|\n|\n\r)", "\n");
         }
 
         try (InputStream is = new FileInputStream("src/test/resources/describe_api.json")) {
-            noopApiResult = IOUtils.toString(is, StandardCharsets.UTF_8.name());
+            noopApiResult = IOUtils.toString(is, StandardCharsets.UTF_8.name()).replaceAll("(\r\n|\r|\n|\n\r)", "\n");
         }
     }
 
@@ -665,6 +665,7 @@ public class ModelServerTest {
             dependsOnMethods = {"testLoadingMemoryError"})
     public void testPredictionMemoryError() throws InterruptedException {
         // Load the model
+        Thread.sleep(500);
         Channel channel = TestUtils.getManagementChannel(configManager);
         Assert.assertNotNull(channel);
         TestUtils.setResult(null);
@@ -1385,8 +1386,9 @@ public class ModelServerTest {
         //  test case for verifying port range refer https://github.com/pytorch/serve/issues/291
         ConfigManager.init(new ConfigManager.Arguments());
         ConfigManager configManagerValidPort = ConfigManager.getInstance();
-        FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
+        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         configManagerValidPort.setProperty("inference_address", "https://127.0.0.1:42523");
+        configManagerValidPort.setProperty("management_address", "https://127.0.0.1:42524");
         ModelServer serverValidPort = new ModelServer(configManagerValidPort);
         serverValidPort.start();
 
