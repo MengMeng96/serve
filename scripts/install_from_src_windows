@@ -5,12 +5,10 @@ echo "                      If you are within a conda env please deactivate it a
 echo "                      If you don't want to proceed kill this script in the next 10 seconds!"
 echo "                      =============================================="
 
-sleep 10
 echo "Cleaning up state"
 # uninstall any global installations
 pip uninstall --yes torchserve
 pip uninstall --yes torch-model-archiver
-sleep 5
 
 if frontend/gradlew.bat -p frontend clean build;
   then
