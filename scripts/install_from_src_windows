@@ -6,12 +6,8 @@ echo "                      If you don't want to proceed kill this script in the
 echo "                      =============================================="
 
 sleep 10
-
 clean_slate
-
 build_frontend_win
-
 build_install_server
 build_install_archiver
-
 clean_up_build_residuals
