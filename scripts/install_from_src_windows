@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+source scripts/install_utils
+
+echo "                      =============================================="
+echo "                      If you are within a conda env please deactivate it and come back"
+echo "                      If you don't want to proceed kill this script in the next 10 seconds!"
+echo "                      =============================================="
+
+sleep 10
+
+clean_slate
+
+build_frontend_win
+
+build_install_server
+build_install_archiver
+
+clean_up_build_residuals
