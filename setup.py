@@ -81,11 +81,6 @@ class BuildFrontEnd(setuptools.command.build_py.build_py):
         if os.path.exists('build/lib/'):
             rmtree('build/lib/')
 
-        try:
-            res = subprocess.check_call('bash ./frontend/gradlew.bat -p frontend clean build', shell=True)
-            print(res)
-        except OSError:
-            assert 0, "build failed"
         copy2(self.source_server_file, self.dest_file_name)
 
 
