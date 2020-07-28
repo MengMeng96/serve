@@ -56,7 +56,7 @@ class BuildFrontEnd(setuptools.command.build_py.build_py):
     Class defined to run custom commands.
     """
     description = 'Build Model Server Frontend'
-    source_server_file = os.path.abspath('frontend/server/build_backup/libs/server-1.0.jar')
+    source_server_file = os.path.abspath('frontend/server/build/libs/server-1.0.jar')
     dest_file_name = os.path.abspath('ts/frontend/model-server.jar')
 
     # noinspection PyMethodMayBeStatic
@@ -81,6 +81,11 @@ class BuildFrontEnd(setuptools.command.build_py.build_py):
         if os.path.exists('build/lib/'):
             rmtree('build/lib/')
 
+        try:
+            res = subprocess.check_call('frontend\gradlew.bat -p frontend clean build', shell=True)
+            print(res)
+        except OSError:
+            assert 0, "build failed"
         copy2(self.source_server_file, self.dest_file_name)
 
 
