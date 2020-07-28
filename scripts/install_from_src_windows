@@ -8,8 +8,8 @@ echo "                      =============================================="
 sleep 10
 echo "Cleaning up state"
 # uninstall any global installations
-pip uninstall --yes torchserve || true
-pip uninstall --yes torch-model-archiver || true
+pip uninstall --yes torchserve
+pip uninstall --yes torch-model-archiver
 sleep 5
 
 if frontend/gradlew.bat -p frontend clean build;
