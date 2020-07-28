@@ -14,6 +14,7 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
 import io.netty.util.internal.logging.InternalLoggerFactory;
 import io.netty.util.internal.logging.Slf4JLoggerFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
+
 import org.apache.commons.io.FileUtils;
 import org.pytorch.serve.servingsdk.impl.PluginsManager;
 import org.pytorch.serve.snapshot.InvalidSnapshotException;
@@ -51,7 +53,7 @@ public class SnapshotTest {
     @BeforeClass
     public void beforeSuite()
             throws InterruptedException, IOException, GeneralSecurityException,
-                    InvalidSnapshotException {
+            InvalidSnapshotException {
         System.setProperty("tsConfigFile", "src/test/resources/config.properties");
         FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         ConfigManager.init(new ConfigManager.Arguments());
@@ -254,7 +256,7 @@ public class SnapshotTest {
             dependsOnMethods = {"testStopTorchServeSnapshot"})
     public void testStartTorchServeWithLastSnapshot()
             throws InterruptedException, IOException, GeneralSecurityException,
-                    InvalidSnapshotException {
+            InvalidSnapshotException {
         System.setProperty("tsConfigFile", "");
         ConfigManager.init(new ConfigManager.Arguments());
         configManager = ConfigManager.getInstance();
@@ -276,7 +278,7 @@ public class SnapshotTest {
             dependsOnMethods = {"testStartTorchServeWithLastSnapshot"})
     public void testRestartTorchServeWithSnapshotAsConfig()
             throws InterruptedException, IOException, GeneralSecurityException,
-                    InvalidSnapshotException {
+            InvalidSnapshotException {
         server.stop();
         validateSnapshot("snapshot9.cfg");
 

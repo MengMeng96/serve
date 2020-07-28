@@ -16,6 +16,7 @@ import io.netty.handler.codec.http.multipart.MemoryFileUpload;
 import io.netty.util.CharsetUtil;
 import io.netty.util.internal.logging.InternalLoggerFactory;
 import io.netty.util.internal.logging.Slf4JLoggerFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.security.GeneralSecurityException;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.pytorch.serve.http.DescribeModelResponse;
@@ -63,7 +65,7 @@ public class ModelServerTest {
     @BeforeSuite
     public void beforeSuite()
             throws InterruptedException, IOException, GeneralSecurityException,
-                    InvalidSnapshotException {
+            InvalidSnapshotException {
         ConfigManager.init(new ConfigManager.Arguments());
         configManager = ConfigManager.getInstance();
         PluginsManager.getInstance().initialize();
@@ -363,7 +365,7 @@ public class ModelServerTest {
             dependsOnMethods = {"testInvocationsJson"})
     public void testInvocationsMultipart()
             throws InterruptedException, HttpPostRequestEncoder.ErrorDataEncoderException,
-                    IOException {
+            IOException {
         Channel channel = TestUtils.getInferenceChannel(configManager);
         TestUtils.setResult(null);
         TestUtils.setLatch(new CountDownLatch(1));
@@ -411,7 +413,7 @@ public class ModelServerTest {
             dependsOnMethods = {"testModelsInvokeJson"})
     public void testModelsInvokeMultipart()
             throws InterruptedException, HttpPostRequestEncoder.ErrorDataEncoderException,
-                    IOException {
+            IOException {
         Channel channel = TestUtils.getInferenceChannel(configManager);
         TestUtils.setResult(null);
         TestUtils.setLatch(new CountDownLatch(1));
@@ -1382,11 +1384,11 @@ public class ModelServerTest {
             dependsOnMethods = {"testUnregisterModelFailure"})
     public void testTSValidPort()
             throws InterruptedException, InvalidSnapshotException, GeneralSecurityException,
-                    IOException {
+            IOException {
         //  test case for verifying port range refer https://github.com/pytorch/serve/issues/291
         ConfigManager.init(new ConfigManager.Arguments());
         ConfigManager configManagerValidPort = ConfigManager.getInstance();
-        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
+        //  FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         configManagerValidPort.setProperty("inference_address", "https://127.0.0.1:42523");
         configManagerValidPort.setProperty("management_address", "https://127.0.0.1:42524");
         ModelServer serverValidPort = new ModelServer(configManagerValidPort);
@@ -1423,7 +1425,7 @@ public class ModelServerTest {
             dependsOnMethods = {"testTSValidPort"})
     public void testTSInvalidPort()
             throws IOException, InterruptedException, GeneralSecurityException,
-                    InvalidSnapshotException {
+            InvalidSnapshotException {
         //  test case for verifying port range refer https://github.com/pytorch/serve/issues/291
         //  invalid port test
         ConfigManager.init(new ConfigManager.Arguments());
