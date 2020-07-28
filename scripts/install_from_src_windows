@@ -4,12 +4,10 @@ echo "                      =============================================="
 echo "                      If you are within a conda env please deactivate it and come back"
 echo "                      If you don't want to proceed kill this script in the next 10 seconds!"
 echo "                      =============================================="
-
 echo "Cleaning up state"
 # uninstall any global installations
 pip uninstall --yes torchserve
 pip uninstall --yes torch-model-archiver
-
 if frontend/gradlew.bat -p frontend clean build;
   then
   echo "Frontend build suite execution successful"
@@ -17,9 +15,7 @@ else
   echo "Frontend build suite execution failed!!! Check logs for more details"
   exit 1
 fi
-
 pip install .
-
 echo $PWD
 cd model-archiver
 if pip install .;
@@ -30,7 +26,6 @@ else
   exit 1
 fi
 cd ..
-
 rm -rf ts/__pycache__/
 rm -rf ts/metrics/__pycache__/
 rm -rf ts/protocol/__pycache__/
