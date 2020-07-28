@@ -55,6 +55,7 @@ class FormatterPlugin implements Plugin<Project> {
                         formatted = ImportOrderer.reorderImports(formatted);
                         if (!src.equals(formatted)) {
                             print(formatted)
+                            print(src)
                             throw new GradleException("File not formatted: " + file.getAbsolutePath())
                         }
                     }
