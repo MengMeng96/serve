@@ -32,7 +32,7 @@ import org.pytorch.serve.snapshot.InvalidSnapshotException;
 import org.pytorch.serve.snapshot.Snapshot;
 import org.pytorch.serve.util.ConfigManager;
 import org.pytorch.serve.wlm.Model;
-import org.testng.Assert;
+//import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
