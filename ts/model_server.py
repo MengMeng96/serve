@@ -48,13 +48,13 @@ def start():
                 print("TorchServe is already running, please use torchserve --stop to stop TorchServe.")
                 sys.exit(1)
             except psutil.Error:
-                print("Removing orphan pid file zcm.")
+                print("Removing orphan pid file.")
                 os.remove(pid_file)
-        print(1)
+
         java_home = os.environ.get("JAVA_HOME")
         java = "java" if not java_home else "{}/bin/java".format(java_home)
-        print(2)
-        ts_home = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
+        ts_home = sepChange(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
         cmd = [java, "-Dmodel_server_home={}".format(ts_home)]
         if args.log_config:
             log_config = os.path.realpath(args.log_config)
@@ -63,7 +63,7 @@ def start():
                 sys.exit(1)
 
             cmd.append("-Dlog4j.configuration=file://{}".format(log_config))
-        print(3)
+
         tmp_dir = os.environ.get("TEMP")
         if tmp_dir:
             if not os.path.isdir(tmp_dir):
@@ -71,7 +71,7 @@ def start():
                 sys.exit(1)
 
             cmd.append("-Djava.io.tmpdir={}".format(tmp_dir))
-        print(4)
+
         ts_config = args.ts_config
         ts_conf_file = None
         if ts_config:
@@ -79,10 +79,10 @@ def start():
                 print("--ts-config file not found: {}".format(ts_config))
                 sys.exit(1)
             ts_conf_file = ts_config
-        print(4)
+
         class_path = \
-            ".:{}".format(os.path.join(ts_home, "ts/frontend/*"))
-        print(5)
+            "{}".format(os.path.join(ts_home, "ts/frontend/*"))
+        print(class_path)
         if ts_conf_file and os.path.isfile(ts_conf_file):
             props = load_properties(ts_conf_file)
             vm_args = props.get("vmargs")
@@ -100,20 +100,20 @@ def start():
 
             if not args.model_store and props.get('model_store'):
                 args.model_store = props.get('model_store')
-        print(6)
+
         cmd.append("-cp")
         cmd.append(class_path)
-        print(7)
+
         cmd.append("org.pytorch.serve.ModelServer")
-        print(8)
+
         # model-server.jar command line parameters
         cmd.append("--python")
         cmd.append(sys.executable)
-        print(9)
+
         if ts_conf_file is not None:
             cmd.append("-f")
             cmd.append(ts_conf_file)
-        print(10)
+
         if args.model_store:
             if not os.path.isdir(args.model_store):
                 print("--model-store directory not found: {}".format(args.model_store))
@@ -124,10 +124,10 @@ def start():
         else:
             print("Missing mandatory parameter --model-store")
             sys.exit(1)
-        print(11)
+
         if args.no_config_snapshots:
             cmd.append("-ncs")
-        print(12)
+
         if args.models:
             cmd.append("-m")
             cmd.extend(args.models)
@@ -137,9 +137,8 @@ def start():
                     if not pattern.match(model_url) and model_url != "ALL":
                         print("--model-store is required to load model locally.")
                         sys.exit(1)
-        print(13)
+
         try:
-            print(cmd)
             process = subprocess.Popen(cmd)
             pid = process.pid
             with open(pid_file, "w") as pf:
@@ -168,6 +167,16 @@ def load_properties(file_path):
                     props[key] = pair[1].strip()
 
     return props
+
+
+def sepChange(path):
+    if re.search('/', path):
+        path = path.replace('/',os.sep)
+    elif re.search(r'\\',path):
+        path = path.replace(r'\\',os.sep)
+    else:
+        pass
+    return path
 
 
 if __name__ == "__main__":
