@@ -81,7 +81,7 @@ def start():
             ts_conf_file = ts_config
 
         class_path = \
-            sepChange("{}".format(os.path.join(ts_home, "ts/frontend/*")))
+            "{}".format(os.path.join(ts_home, "ts/frontend/*"))
         print(class_path)
         if ts_conf_file and os.path.isfile(ts_conf_file):
             props = load_properties(ts_conf_file)
@@ -113,7 +113,7 @@ def start():
         if ts_conf_file is not None:
             cmd.append("-f")
             cmd.append(ts_conf_file)
-
+        print(sepChange(cmd))
         if args.model_store:
             if not os.path.isdir(args.model_store):
                 print("--model-store directory not found: {}".format(args.model_store))
@@ -139,6 +139,8 @@ def start():
                         sys.exit(1)
 
         try:
+            cmd = sepChange(cmd)
+            print(cmd)
             process = subprocess.Popen(cmd)
             pid = process.pid
             with open(pid_file, "w") as pf:
@@ -169,10 +171,13 @@ def load_properties(file_path):
     return props
 
 
-def sepChange(path):
-    if re.search(r'\\', path):
-        path = path.replace(r'\\', '/')
-    return path
+def sepChange(paths):
+    res = []
+    for path in paths:
+        if re.search(r'\\', path):
+            path = path.replace(r'\\', '/')
+        res.append(path)
+    return res
 
 
 if __name__ == "__main__":
