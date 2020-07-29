@@ -48,7 +48,7 @@ def start():
                 print("TorchServe is already running, please use torchserve --stop to stop TorchServe.")
                 sys.exit(1)
             except psutil.Error:
-                print("Removing orphan pid file.")
+                print("Removing orphan pid file zcm.")
                 os.remove(pid_file)
         print(1)
         java_home = os.environ.get("JAVA_HOME")
