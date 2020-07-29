@@ -139,6 +139,7 @@ def start():
                         sys.exit(1)
 
         try:
+            print(cmd)
             process = subprocess.Popen(cmd)
             pid = process.pid
             with open(pid_file, "w") as pf:
