@@ -5,7 +5,7 @@ echo "                      If you are within a conda env please deactivate it a
 echo "                      If you don't want to proceed kill this script in the next 10 seconds!"
 echo "                      =============================================="
 echo "Cleaning up state"
-
+python -m pip install --upgrade pip
 pip uninstall --yes torchserve
 pip uninstall --yes torch-model-archiver
 
