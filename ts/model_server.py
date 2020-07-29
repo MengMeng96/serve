@@ -54,7 +54,7 @@ def start():
         java_home = os.environ.get("JAVA_HOME")
         java = "java" if not java_home else "{}/bin/java".format(java_home)
 
-        ts_home = sepChange(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+        ts_home = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
         cmd = [java, "-Dmodel_server_home={}".format(ts_home)]
         if args.log_config:
             log_config = os.path.realpath(args.log_config)
@@ -81,7 +81,7 @@ def start():
             ts_conf_file = ts_config
 
         class_path = \
-            "{}".format(os.path.join(ts_home, "ts/frontend/*"))
+            sepChange("{}".format(os.path.join(ts_home, "ts/frontend/*")))
         print(class_path)
         if ts_conf_file and os.path.isfile(ts_conf_file):
             props = load_properties(ts_conf_file)
