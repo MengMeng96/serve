@@ -170,12 +170,8 @@ def load_properties(file_path):
 
 
 def sepChange(path):
-    if re.search('/', path):
-        path = path.replace('/',os.sep)
-    elif re.search(r'\\',path):
-        path = path.replace(r'\\',os.sep)
-    else:
-        pass
+    if re.search(r'\\', path):
+        path = path.replace(r'\\', '/')
     return path
 
 
