@@ -9,6 +9,8 @@ echo "Cleaning up state"
 pip uninstall --yes torchserve
 pip uninstall --yes torch-model-archiver
 
+pip install torch torchtext torchvision sentencepiece psutil future
+
 if frontend/gradlew.bat -p frontend clean build;
   then
   echo "Frontend build suite execution successful"
