@@ -8,8 +8,8 @@ echo "Cleaning up state"
 python -m pip install --upgrade pip
 pip uninstall --yes torchserve
 pip uninstall --yes torch-model-archiver
-
-pip install torch torchtext torchvision sentencepiece psutil future
+pip install torch==1.5.1+cpu torchvision==0.6.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
+pip install torchtext torchvision sentencepiece psutil future numpy
 
 if frontend/gradlew.bat -p frontend clean build;
   then
