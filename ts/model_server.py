@@ -80,7 +80,7 @@ def start():
                 print("--ts-config file not found: {}".format(ts_config))
                 sys.exit(1)
             ts_conf_file = ts_config
-        if(platform.system()=='Windows'):
+        if(platform.system() == 'Windows'):
             class_path = \
                         "{}".format(os.path.join(ts_home, "ts/frontend/*"))
         else:
