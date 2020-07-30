@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 from builtins import str
+import platform
 
 import psutil
 from ts.version import __version__
@@ -79,9 +80,13 @@ def start():
                 print("--ts-config file not found: {}".format(ts_config))
                 sys.exit(1)
             ts_conf_file = ts_config
+        if(platform.system()=='Windows'):
+            class_path = \
+                        "{}".format(os.path.join(ts_home, "ts/frontend/*"))
+        else:
+            class_path = \
+                        ".:{}".format(os.path.join(ts_home, "ts/frontend/*"))
 
-        class_path = \
-            "{}".format(os.path.join(ts_home, "ts\\frontend\\*"))
 
         if ts_conf_file and os.path.isfile(ts_conf_file):
             props = load_properties(ts_conf_file)
