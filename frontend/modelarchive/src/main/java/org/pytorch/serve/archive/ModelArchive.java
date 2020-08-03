@@ -54,7 +54,7 @@ public class ModelArchive {
 
         String marFileName = FilenameUtils.getName(url);
         File modelLocation = new File(modelStore, marFileName);
-
+        logger.info("ModelArchive downloadModel {}", modelLocation.toPath());
         if (URL_PATTERN.matcher(url).matches()) {
             if (modelLocation.exists()) {
                 throw new FileAlreadyExistsException(marFileName);
