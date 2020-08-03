@@ -114,7 +114,9 @@ public class ModelServerTest {
         TestUtils.setLatch(new CountDownLatch(1));
         TestUtils.getRoot(channel);
         TestUtils.getLatch().await();
-
+        System.out.println(TestUtils.getResult());
+        System.out.println("--------");
+        System.out.println(listInferenceApisResult);
         Assert.assertEquals(TestUtils.getResult(), listInferenceApisResult);
     }
 
