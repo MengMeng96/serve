@@ -54,7 +54,6 @@ public class ModelArchive {
 
         String marFileName = FilenameUtils.getName(url);
         File modelLocation = new File(modelStore, marFileName);
-        logger.info("ModelArchive downloadModel {}", modelLocation.toPath());
         while(modelLocation.exists()){
             logger.info("ModelArchive downloadModel {}", modelLocation.toPath());
         }
