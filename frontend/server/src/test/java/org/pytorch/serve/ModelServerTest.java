@@ -76,18 +76,18 @@ public class ModelServerTest {
         try (InputStream is = new FileInputStream("src/test/resources/inference_open_api.json")) {
             listInferenceApisResult =
                     String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version)
-                            .replaceAll("(\r\n|\r|\n|\n\r)", "\n");
+                            .replaceAll("(\r\n|\r|\n|\n\r)", "\r");
         }
 
         try (InputStream is = new FileInputStream("src/test/resources/management_open_api.json")) {
             listManagementApisResult =
                     String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version)
-                            .replaceAll("(\r\n|\r|\n|\n\r)", "\n");
+                            .replaceAll("(\r\n|\r|\n|\n\r)", "\r");
         }
 
         try (InputStream is = new FileInputStream("src/test/resources/describe_api.json")) {
             noopApiResult = IOUtils.toString(is, StandardCharsets.UTF_8.name())
-                    .replaceAll("(\r\n|\r|\n|\n\r)", "\n");
+                    .replaceAll("(\r\n|\r|\n|\n\r)", "\r");
         }
     }
 
