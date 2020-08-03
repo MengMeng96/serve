@@ -728,6 +728,7 @@ public class ModelServerTest {
             alwaysRun = true,
             dependsOnMethods = {"testLoadingMemoryError"})
     public void testPredictionMemoryError() throws InterruptedException {
+        Thread.sleep(500);
         // Load the model
         Channel channel = TestUtils.connect(true, configManager);
         Assert.assertNotNull(channel);
@@ -1449,8 +1450,9 @@ public class ModelServerTest {
         //  test case for verifying port range refer https://github.com/pytorch/serve/issues/291
         ConfigManager.init(new ConfigManager.Arguments());
         ConfigManager configManagerValidPort = ConfigManager.getInstance();
-        FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
+        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         configManagerValidPort.setProperty("inference_address", "https://127.0.0.1:42523");
+        configManagerValidPort.setProperty("management_address", "https://127.0.0.1:42524");
         ModelServer serverValidPort = new ModelServer(configManagerValidPort);
         serverValidPort.start();
 
