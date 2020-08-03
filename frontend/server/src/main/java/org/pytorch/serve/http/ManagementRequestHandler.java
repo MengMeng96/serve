@@ -264,6 +264,7 @@ public class ManagementRequestHandler extends HttpRequestHandlerChain {
             ChannelHandlerContext ctx, String modelName, String modelVersion)
             throws ModelNotFoundException, InternalServerException, RequestTimeoutException,
                     ModelVersionNotFoundException {
+        System.out.println("Management handleUnregisterModel");
         ModelManager modelManager = ModelManager.getInstance();
         HttpResponseStatus httpResponseStatus =
                 modelManager.unregisterModel(modelName, modelVersion);
