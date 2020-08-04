@@ -220,7 +220,7 @@ public final class ModelManager {
     }
 
     public HttpResponseStatus unregisterModel(String modelName, String versionId) {
-        logger.debug("ModelManager unregisterModel 0 {}", modelName)
+        logger.debug("ModelManager unregisterModel 0 {}", modelName);
         ModelVersionedRefs vmodel = modelsNameMap.get(modelName);
         if (vmodel == null) {
             logger.warn("Model not found: " + modelName);
@@ -235,7 +235,7 @@ public final class ModelManager {
         HttpResponseStatus httpResponseStatus = HttpResponseStatus.OK;
 
         try {
-            logger.debug("ModelManager unregisterModel 1 {}", versionId)
+            logger.debug("ModelManager unregisterModel 1 {}", versionId);
             model = vmodel.removeVersionModel(versionId);
             model.setMinWorkers(0);
             model.setMaxWorkers(0);
