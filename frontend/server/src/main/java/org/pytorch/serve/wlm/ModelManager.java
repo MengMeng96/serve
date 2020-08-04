@@ -134,7 +134,7 @@ public final class ModelManager {
             Manifest.RuntimeType runtime,
             String defaultModelName)
             throws FileAlreadyExistsException, ModelException, IOException {
-        logger.info("modelName : {}", modelName)
+        logger.info("modelName : {}", modelName);
         ModelArchive archive = ModelArchive.downloadModel(configManager.getModelStore(), url);
         if (modelName == null || modelName.isEmpty()) {
             if (archive.getModelName() == null || archive.getModelName().isEmpty()) {
