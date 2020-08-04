@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f63cc24c-f872-4ac2-a02b-0fe41fa125c5" name="Default Changelist" comment="" />
+    <list default="true" id="f63cc24c-f872-4ac2-a02b-0fe41fa125c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/modelarchive/src/main/java/org/pytorch/serve/archive/ModelArchive.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/modelarchive/src/main/java/org/pytorch/serve/archive/ModelArchive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/server/src/main/java/org/pytorch/serve/wlm/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/server/src/main/java/org/pytorch/serve/wlm/ModelManager.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +77,7 @@
       <workItem from="1596436812887" duration="640000" />
       <workItem from="1596437735934" duration="2362000" />
       <workItem from="1596444735652" duration="4569000" />
-      <workItem from="1596503765628" duration="476000" />
+      <workItem from="1596503765628" duration="738000" />
     </task>
     <servers />
   </component>
