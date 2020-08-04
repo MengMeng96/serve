@@ -79,6 +79,10 @@ public final class SnapshotManager {
             logger.error("Model not found while saving snapshot {}", snapshotName);
         } catch (IOException e) {
             logger.error("Error while saving snapshot to file {}", snapshotName);
+            boolean flag = true;
+            while(flag){
+                flag = true;
+            }
         }
     }
 
@@ -87,6 +91,7 @@ public final class SnapshotManager {
     }
 
     public void saveStartupSnapshot() {
+        logger.info("SnapshotManager saveStartupSnapshot {}", getSnapshotName("startup"));
         saveSnapshot(getSnapshotName("startup"));
     }
 
