@@ -375,9 +375,10 @@ public class ModelServer {
         for (ChannelFuture future : futures) {
             future.channel().close();
         }
-
+        logger.debug("ModelServer stop");
         SnapshotManager.getInstance().saveShutdownSnapshot();
         serverGroups.shutdown(true);
         serverGroups.init();
+        logger.debug("ModelServer stop end");
     }
 }

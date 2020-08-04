@@ -31,8 +31,9 @@ public class FSSnapshotSerializer implements SnapshotSerializer {
     @Override
     public void saveSnapshot(Snapshot snapshot) throws IOException {
         File snapshotPath = new File(getSnapshotDirectory());
-
-        FileUtils.forceMkdir(snapshotPath);
+        if (!snapshotPath.exists()) {
+            FileUtils.forceMkdir(snapshotPath);
+        }
 
         Properties prop = configManager.getConfiguration();
 
