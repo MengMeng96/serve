@@ -32,6 +32,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest req) {
         try {
+            System.out.println("HttpRequestHandler " + req + " end");
             NettyUtils.requestReceived(ctx.channel(), req);
             if (!req.decoderResult().isSuccess()) {
                 throw new BadRequestException("Invalid HTTP message.");
