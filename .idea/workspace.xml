@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f63cc24c-f872-4ac2-a02b-0fe41fa125c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/modelarchive/src/main/java/org/pytorch/serve/archive/ModelArchive.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/modelarchive/src/main/java/org/pytorch/serve/archive/ModelArchive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/server/src/test/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/server/src/test/resources/config.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1evoGKeBGhx8w3S8FyuE8cmUuLP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f63cc24c-f872-4ac2-a02b-0fe41fa125c5" name="Default Changelist" comment="" />
+      <created>1595211330231</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595211330231</updated>
+      <workItem from="1595211338721" duration="731000" />
+      <workItem from="1595237227635" duration="10072000" />
+      <workItem from="1595313704979" duration="3130000" />
+      <workItem from="1595322804777" duration="916000" />
+      <workItem from="1595324121025" duration="6585000" />
+      <workItem from="1595338788621" duration="5970000" />
+      <workItem from="1595397821566" duration="28074000" />
+      <workItem from="1595574096692" duration="4013000" />
+      <workItem from="1595814850866" duration="2000" />
+      <workItem from="1595896435411" duration="26142000" />
+      <workItem from="1596086798788" duration="15185000" />
+      <workItem from="1596418076004" duration="4582000" />
+      <workItem from="1596436597680" duration="178000" />
+      <workItem from="1596436812887" duration="640000" />
+      <workItem from="1596437735934" duration="2362000" />
+      <workItem from="1596444735652" duration="4569000" />
+      <workItem from="1596503765628" duration="240000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595473171983">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1595473171983" />
+    <state x="615" y="370" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596445596950">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="615" y="370" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1596445596950" />
+    <state x="745" y="456" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1595902648286">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="745" y="456" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1595902648286" />
+    <state x="100" y="0" width="1592" height="1120" key="DiffContextDialog" timestamp="1596445662795">
+      <screen x="0" y="23" width="1792" height="1020" />
+    </state>
+    <state x="100" y="0" width="1592" height="1120" key="DiffContextDialog/0.23.1792.1017@0.23.1792.1017" timestamp="1595320633585" />
+    <state x="100" y="0" width="1592" height="1120" key="DiffContextDialog/0.23.1792.1020@0.23.1792.1020" timestamp="1596445662795" />
+    <state x="397" y="199" key="SettingsEditor" timestamp="1595322793403">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1595322793403" />
+    <state x="573" y="379" key="com.intellij.ide.util.TipDialog" timestamp="1595397821532">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="573" y="379" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1595397821532" />
+    <state x="679" y="484" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595396771508">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="679" y="484" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1595396771508" />
+    <state x="878" y="262" width="837" height="540" key="find.popup" timestamp="1596447055285">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="878" y="262" width="837" height="540" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1596447055285" />
+  </component>
+</project>
