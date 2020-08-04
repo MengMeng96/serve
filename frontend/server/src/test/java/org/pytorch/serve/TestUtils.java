@@ -110,6 +110,7 @@ public final class TestUtils {
         System.out.println("TestUtil unregisterModel " + requestURL);
         HttpRequest req =
                 new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.DELETE, requestURL);
+        System.out.println("TestUtil unregisterModel req end");
         if (syncChannel) {
             channel.writeAndFlush(req).sync();
             channel.closeFuture().sync();
