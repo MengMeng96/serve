@@ -1523,6 +1523,7 @@ public class ModelServerTest {
         Channel channel = TestUtils.getManagementChannel(configManager);
         TestUtils.setResult(null);
         TestUtils.setLatch(new CountDownLatch(1));
+        System.out.println("ModelServerTest testUnregisterModel");
         TestUtils.unregisterModel(channel, modelName, version, false);
         TestUtils.getLatch().await();
 

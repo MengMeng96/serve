@@ -107,7 +107,7 @@ public final class TestUtils {
         if (version != null) {
             requestURL += "/" + version;
         }
-
+        System.out.println("TestUtil unregisterModel " + requestURL);
         HttpRequest req =
                 new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.DELETE, requestURL);
         if (syncChannel) {
