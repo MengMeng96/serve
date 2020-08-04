@@ -704,6 +704,7 @@ public class ModelServerTest {
             alwaysRun = true,
             dependsOnMethods = {"testModelWithInvalidCustomPythonDependency"})
     public void testUnregisterURLModel() throws InterruptedException {
+        Thread.sleep(500);
         testUnregisterModel("squeezenet", null);
         Assert.assertFalse(new File(configManager.getModelStore(), "squeezenet1_1.mar").exists());
     }
