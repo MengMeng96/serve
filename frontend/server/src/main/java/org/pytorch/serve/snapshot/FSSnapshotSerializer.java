@@ -46,7 +46,9 @@ public class FSSnapshotSerializer implements SnapshotSerializer {
 
         String snapshotJson = GSON.toJson(snapshot, Snapshot.class);
         prop.put(MODEL_SNAPSHOT, snapshotJson);
+        logger.debug("FSSnapshotSerializer {}", snapshotPath.toPath());
         try (OutputStream os = Files.newOutputStream(snapshotFile.toPath())) {
+            logger.debug("FSSnapshotSerializer io end");
             OutputStreamWriter osWriter = new OutputStreamWriter(os, StandardCharsets.UTF_8);
             prop.store(osWriter, "Saving snapshot");
             osWriter.flush();
