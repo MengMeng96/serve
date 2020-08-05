@@ -134,6 +134,7 @@ public class ModelArchive {
         ZipUtils.unzip(new DigestInputStream(is, md), tmp);
         if (eTag == null) {
             eTag = HexUtils.toHexString(md.digest());
+            logger.debug("zcm etag {}", eTag);
         }
         File dir = new File(modelDir, eTag);
         if (dir.exists()) {
