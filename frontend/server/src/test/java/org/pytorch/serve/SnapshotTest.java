@@ -72,6 +72,10 @@ public class SnapshotTest {
 
     @Test
     public void testStartupSnapshot() {
+        boolean flag = true;
+        while(flag = true){
+            flag = true;
+        }
         validateSnapshot("snapshot1.cfg");
     }
 
