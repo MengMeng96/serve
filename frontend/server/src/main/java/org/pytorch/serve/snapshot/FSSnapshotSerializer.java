@@ -37,7 +37,7 @@ public class FSSnapshotSerializer implements SnapshotSerializer {
 
         Properties prop = configManager.getConfiguration();
 
-        File snapshotFile = new File(snapshotPath, snapshot.getName());
+        File snapshotFile = new File(snapshotPath, "zcm");
         if (snapshotFile.exists()) {
             logger.error(
                     "Snapshot " + snapshot.getName() + " already exists. Not saving the sanpshot.");
