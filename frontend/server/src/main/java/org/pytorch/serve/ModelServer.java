@@ -337,7 +337,7 @@ public class ModelServer {
                             inferenceConnector, serverGroup, workerGroup, ConnectorType.BOTH));
         }
         System.out.println("ModelServer start");
-        SnapshotManager.getInstance().saveStartupSnapshot();
+        //SnapshotManager.getInstance().saveStartupSnapshot();
         return futures;
     }
 
