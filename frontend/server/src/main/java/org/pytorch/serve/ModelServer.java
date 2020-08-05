@@ -376,11 +376,8 @@ public class ModelServer {
             future.channel().close();
         }
         logger.debug("ModelServer stop");
-        boolean flag = true;
-        while(flag){
-            flag = true;
-        }
-        SnapshotManager.getInstance().saveShutdownSnapshot();
+
+        //SnapshotManager.getInstance().saveShutdownSnapshot();
         serverGroups.shutdown(true);
         serverGroups.init();
         logger.debug("ModelServer stop end");
