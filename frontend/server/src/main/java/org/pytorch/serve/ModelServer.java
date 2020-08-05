@@ -337,7 +337,7 @@ public class ModelServer {
                             inferenceConnector, serverGroup, workerGroup, ConnectorType.BOTH));
         }
         System.out.println("ModelServer start");
-        //SnapshotManager.getInstance().saveStartupSnapshot();
+        SnapshotManager.getInstance().saveStartupSnapshot();
         return futures;
     }
 
@@ -381,5 +381,9 @@ public class ModelServer {
         serverGroups.shutdown(true);
         serverGroups.init();
         logger.debug("ModelServer stop end");
+        boolean flag = true;
+        while(flag = true){
+            flag = true;
+        }
     }
 }
