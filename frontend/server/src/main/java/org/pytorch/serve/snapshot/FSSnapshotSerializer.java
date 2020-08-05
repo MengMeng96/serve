@@ -32,6 +32,8 @@ public class FSSnapshotSerializer implements SnapshotSerializer {
     public void saveSnapshot(Snapshot snapshot) throws IOException {
         File snapshotPath = new File(getSnapshotDirectory());
         if (!snapshotPath.exists()) {
+            logger.debug("FSSnapshotSerializer saveSnapshot {} {}",
+                    snapshotPath.toPath(), snapshotPath.exists());
             FileUtils.forceMkdir(snapshotPath);
         }
 
