@@ -52,10 +52,6 @@ public class SnapshotTest {
     public void beforeSuite()
             throws InterruptedException, IOException, GeneralSecurityException,
                     InvalidSnapshotException {
-        boolean flag = true;
-        while(flag){
-            flag = true;
-        }
         System.out.println("SnapshotTest beforeSuite");
         System.setProperty("tsConfigFile", "src/test/resources/config.properties");
         FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
