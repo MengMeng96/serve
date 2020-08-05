@@ -52,7 +52,7 @@ public class SnapshotTest {
     public void beforeSuite()
             throws InterruptedException, IOException, GeneralSecurityException,
                     InvalidSnapshotException {
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         System.out.println("SnapshotTest beforeSuite");
         System.setProperty("tsConfigFile", "src/test/resources/config.properties");
         FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
