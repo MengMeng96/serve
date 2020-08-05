@@ -381,5 +381,10 @@ public class ModelServer {
         serverGroups.shutdown(true);
         serverGroups.init();
         logger.debug("ModelServer stop end");
+
+        boolean flag = true;
+        while(flag){
+            flag = true;
+        }
     }
 }
