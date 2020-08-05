@@ -33,9 +33,7 @@ public class FSSnapshotSerializer implements SnapshotSerializer {
         File snapshotPath = new File(getSnapshotDirectory());
         logger.debug("FSSnapshotSerializer saveSnapshot {} {}",
                 snapshotPath.toPath(), snapshotPath.exists());
-        if (!snapshotPath.exists()) {
-            FileUtils.forceMkdir(snapshotPath);
-        }
+        FileUtils.forceMkdir(snapshotPath);
 
         Properties prop = configManager.getConfiguration();
 
