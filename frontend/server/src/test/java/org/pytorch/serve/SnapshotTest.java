@@ -395,6 +395,9 @@ public class SnapshotTest {
         }
 
         updateSnapshot(actualProp);
+        System.out.println(actualProp);
+        System.out.println("--------------");
+        System.out.println(expectedProp);
         assert actualProp.equals(expectedProp);
     }
 
