@@ -54,7 +54,7 @@ public class SnapshotTest {
                     InvalidSnapshotException {
         System.out.println("SnapshotTest beforeSuite");
         System.setProperty("tsConfigFile", "src/test/resources/config.properties");
-        FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
+        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         ConfigManager.init(new ConfigManager.Arguments());
         configManager = ConfigManager.getInstance();
         PluginsManager.getInstance().initialize();
