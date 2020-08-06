@@ -57,7 +57,7 @@ public class SnapshotTest {
 
         //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
-        String cmd = String.format("rmdir /s /q %s", snapshotPath.toPath())
+        String cmd = String.format("rmdir /s /q %s", snapshotPath.toPath());
         Process process = Runtime.getRuntime().exec(cmd);
         int ret = process.waitFor();
         while (ret != 0) {
