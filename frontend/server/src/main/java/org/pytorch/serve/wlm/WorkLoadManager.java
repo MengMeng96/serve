@@ -123,7 +123,14 @@ public class WorkLoadManager {
                         boolean workerDestroyed = false;
                         try {
                             // TODO : Add OS specific handling for windows support.
-                            String cmd = String.format("taskkill /f /PID %s", workerProcess.pid());
+                            String OS = System.getProperty("os.name").toLowerCase();
+                            String killCMD;
+                            if (OS.indexOf("win") >= 0) {
+                                killCMD = "taskkill /f /PID %s";
+                            } else {
+                                killCMD = "kill -9 %s";
+                            }
+                            String cmd = String.format(killCMD, workerProcess.pid());
                             Process workerKillProcess = Runtime.getRuntime().exec(cmd, null, null);
                             workerDestroyed =
                                     workerKillProcess.waitFor(
