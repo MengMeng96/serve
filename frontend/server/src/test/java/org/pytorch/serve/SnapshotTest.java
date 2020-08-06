@@ -52,10 +52,6 @@ public class SnapshotTest {
     public void beforeSuite()
             throws InterruptedException, IOException, GeneralSecurityException,
                     InvalidSnapshotException {
-        boolean flag = true;
-        while(flag){
-            flag = true;
-        }
         System.out.println("SnapshotTest beforeSuite");
         System.setProperty("tsConfigFile", "src/test/resources/config.properties");
         FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
@@ -66,6 +62,10 @@ public class SnapshotTest {
         InternalLoggerFactory.setDefaultFactory(Slf4JLoggerFactory.INSTANCE);
         server = new ModelServer(configManager);
         server.start();
+        boolean flag = true;
+        while(flag){
+            flag = true;
+        }
     }
 
     @AfterClass
