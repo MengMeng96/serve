@@ -61,10 +61,6 @@ public class SnapshotTest {
 
         InternalLoggerFactory.setDefaultFactory(Slf4JLoggerFactory.INSTANCE);
         server = new ModelServer(configManager);
-        boolean flag = true;
-        while(flag){
-            flag = true;
-        }
         server.start();
     }
 
