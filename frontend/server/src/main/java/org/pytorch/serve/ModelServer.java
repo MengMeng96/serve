@@ -377,7 +377,7 @@ public class ModelServer {
         }
         logger.debug("ModelServer stop");
 
-        //SnapshotManager.getInstance().saveShutdownSnapshot();
+        SnapshotManager.getInstance().saveShutdownSnapshot();
         serverGroups.shutdown(true);
         serverGroups.init();
         logger.debug("ModelServer stop end");
