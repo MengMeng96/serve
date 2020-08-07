@@ -1479,7 +1479,15 @@ public class ModelServerTest {
         //  test case for verifying port range refer https://github.com/pytorch/serve/issues/291
         ConfigManager.init(new ConfigManager.Arguments());
         ConfigManager configManagerValidPort = ConfigManager.getInstance();
-        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
+
+        File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
+        for (File subFile : snapshotPath.listFiles()) {
+            System.out.println(subFile.toPath());
+            while(subFile.exists()){
+                FileUtils.deleteQuietly(subFile);
+            }
+        }
+
         configManagerValidPort.setProperty("inference_address", "https://127.0.0.1:42523");
         configManagerValidPort.setProperty("management_address", "https://127.0.0.1:42524");
         ModelServer serverValidPort = new ModelServer(configManagerValidPort);
@@ -1519,7 +1527,15 @@ public class ModelServerTest {
         //  invalid port test
         ConfigManager.init(new ConfigManager.Arguments());
         ConfigManager configManagerInvalidPort = ConfigManager.getInstance();
-        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
+
+        File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
+        for (File subFile : snapshotPath.listFiles()) {
+            System.out.println(subFile.toPath());
+            while(subFile.exists()){
+                FileUtils.deleteQuietly(subFile);
+            }
+        }
+
         configManagerInvalidPort.setProperty("inference_address", "https://127.0.0.1:65536");
         ModelServer serverInvalidPort = new ModelServer(configManagerInvalidPort);
         try {
