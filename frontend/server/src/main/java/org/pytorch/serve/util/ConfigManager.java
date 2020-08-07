@@ -130,11 +130,7 @@ public final class ConfigManager {
             if (filePath == null) {
                 filePath = getLastSnapshot();
                 if (filePath == null) {
-                    if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
-                        filePath = "src/test/resources/config_win.properties";
-                    } else {
-                        filePath = System.getProperty("tsConfigFile", "config.properties");
-                    }
+                    filePath = System.getProperty("tsConfigFile", "config.properties");
                 }
             }
         }
