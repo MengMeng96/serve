@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
-//import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 import org.pytorch.serve.servingsdk.impl.PluginsManager;
 import org.pytorch.serve.snapshot.InvalidSnapshotException;
 import org.pytorch.serve.snapshot.Snapshot;
@@ -57,11 +57,11 @@ public class SnapshotTest {
 
         //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
-        String cmd = String.format("rmdir /s /q %s", snapshotPath.toPath());
-        Process process = Runtime.getRuntime().exec(cmd);
-        int ret = process.waitFor();
-        while (ret != 0) {
-            ret = -1;
+        for (File subFile : snapshotPath.listFiles()) {
+            System.out.println(subFile.toPath());
+            while(subFile.exists()){
+                FileUtils.deleteQuietly(subFile);
+            }
         }
 
         ConfigManager.init(new ConfigManager.Arguments());
