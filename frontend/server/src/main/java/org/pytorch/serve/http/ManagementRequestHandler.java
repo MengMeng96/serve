@@ -51,7 +51,7 @@ public class ManagementRequestHandler extends HttpRequestHandlerChain {
             QueryStringDecoder decoder,
             String[] segments)
             throws ModelException {
-        System.out.println("ManagementRequestHandler " + isManagementReq(segments));
+        logger.info("ManagementRequestHandler {}", isManagementReq(segments));
         if (isManagementReq(segments)) {
             if (endpointMap.getOrDefault(segments[1], null) != null) {
                 handleCustomEndpoint(ctx, req, segments, decoder);
@@ -265,7 +265,7 @@ public class ManagementRequestHandler extends HttpRequestHandlerChain {
             ChannelHandlerContext ctx, String modelName, String modelVersion)
             throws ModelNotFoundException, InternalServerException, RequestTimeoutException,
                     ModelVersionNotFoundException {
-        System.out.println("Management handleUnregisterModel");
+        logger.info("Management handleUnregisterModel");
         ModelManager modelManager = ModelManager.getInstance();
         HttpResponseStatus httpResponseStatus =
                 modelManager.unregisterModel(modelName, modelVersion);
