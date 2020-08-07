@@ -55,7 +55,6 @@ public class SnapshotTest {
         System.out.println("SnapshotTest beforeSuite");
         System.setProperty("tsConfigFile", "src/test/resources/config.properties");
 
-        //FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));
         File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
         for (File subFile : snapshotPath.listFiles()) {
             System.out.println(subFile.toPath());
