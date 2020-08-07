@@ -54,7 +54,6 @@ public class ModelArchive {
 
         String marFileName = FilenameUtils.getName(url);
         File modelLocation = new File(modelStore, marFileName);
-
         if (URL_PATTERN.matcher(url).matches()) {
             if (modelLocation.exists()) {
                 throw new FileAlreadyExistsException(marFileName);
@@ -134,14 +133,14 @@ public class ModelArchive {
         }
         ZipUtils.unzip(new DigestInputStream(is, md), tmp);
         if (eTag == null) {
+<<<<<<< HEAD
             eTag = UUID.randomUUID().toString().replaceAll("-","");
+=======
+            eTag = UUID.randomUUID().toString().replaceAll("-", "");
+>>>>>>> 4a67a4344b46b57a29b77f82e44e0c023d57c69e
         }
+        logger.info("eTag {}", eTag);
         File dir = new File(modelDir, eTag);
-        if (dir.exists()) {
-            FileUtils.deleteDirectory(tmp);
-            logger.info("model folder already exists: {}", eTag);
-            return dir;
-        }
 
         FileUtils.moveDirectory(tmp, dir);
 
