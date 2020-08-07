@@ -87,8 +87,6 @@ public class ConfigManagerTest {
         args.setSnapshotDisabled(true);
         ConfigManager.init(args);
         ConfigManager configManager = ConfigManager.getInstance();
-        //System.out.println(args.getTsConfigFile() + " " +
-        //        configManager.getEnableEnvVarsConfig() + " " + configManager.getDefaultResponseTimeout());
         Assert.assertEquals("false", configManager.getEnableEnvVarsConfig());
         Assert.assertEquals(120, configManager.getDefaultResponseTimeout());
         modifyEnv("TS_DEFAULT_RESPONSE_TIMEOUT", "120");
