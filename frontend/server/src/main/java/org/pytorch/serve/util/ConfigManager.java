@@ -169,7 +169,7 @@ public final class ConfigManager {
         }
 
         prop.setProperty(
-                getDefaultResponseTimeout,
+                TS_NUMBER_OF_GPU,
                 String.valueOf(
                         Integer.min(
                                 getAvailableGpu(),
