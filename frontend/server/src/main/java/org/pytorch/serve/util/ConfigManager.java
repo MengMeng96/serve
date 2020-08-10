@@ -169,7 +169,7 @@ public final class ConfigManager {
         }
 
         prop.setProperty(
-                TS_NUMBER_OF_GPU,
+                getDefaultResponseTimeout,
                 String.valueOf(
                         Integer.min(
                                 getAvailableGpu(),
@@ -190,7 +190,7 @@ public final class ConfigManager {
         if (Boolean.parseBoolean(prop.getProperty(TS_ASYNC_LOGGING))) {
             enableAsyncLogging();
         }
-
+        logger.debug("ConfigManager {}", getEnableEnvVarsConfig());
         if (Boolean.parseBoolean(getEnableEnvVarsConfig())) {
             // Environment variables have higher precedence over the config file variables
             setSystemVars();
@@ -228,6 +228,7 @@ public final class ConfigManager {
         for (Field f : fields) {
             if (f.getName().startsWith("TS_")) {
                 String val = System.getenv(f.getName());
+                logger.debug("setSystemVars {} {}", f.getName(), val);
                 if (val != null) {
                     try {
                         prop.setProperty((String) f.get(ConfigManager.class), val);
