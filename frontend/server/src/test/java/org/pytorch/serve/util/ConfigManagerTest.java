@@ -48,10 +48,11 @@ public class ConfigManagerTest {
     public void test() throws IOException, GeneralSecurityException, ReflectiveOperationException {
         modifyEnv("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
 
-        ProcessBuilder pb = new ProcessBuilder("CMD.exe", "/C", "SET"); // SET prints out the environment variables
-        pb.redirectErrorStream(true);
-        Map<String,String> env = pb.environment();
-        env.put("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
+        Class<?> processEnvironmentClass = Class.forName("java.lang.ProcessEnvironment");
+        Field f = processEnvironmentClass.getDeclaredField("theCaseInsensitiveEnvironment");
+        f.setAccessible(true);
+        Map<String, String> cienv = (Map<String, String>) f.get(null);
+        cienv.put("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
         System.out.println(System.getenv("TS_DEFAULT_RESPONSE_TIMEOUT"));
 
         ConfigManager.Arguments args = new ConfigManager.Arguments();
