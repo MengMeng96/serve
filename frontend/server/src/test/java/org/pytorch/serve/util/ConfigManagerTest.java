@@ -38,23 +38,23 @@ public class ConfigManagerTest {
 
     @SuppressWarnings("unchecked")
     private void modifyEnv(String key, String val) throws ReflectiveOperationException {
-        Map<String, String> env = System.getenv();
-        Field field = env.getClass().getDeclaredField("m");
-        field.setAccessible(true);
-        ((Map<String, String>) field.get(env)).put(key, val);
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            Class<?> processEnvironmentClass = Class.forName("java.lang.ProcessEnvironment");
+            Field f = processEnvironmentClass.getDeclaredField("theCaseInsensitiveEnvironment");
+            f.setAccessible(true);
+            Map<String, String> cienv = (Map<String, String>) f.get(null);
+            cienv.put(key, val);
+        } else {
+            Map<String, String> env = System.getenv();
+            Field field = env.getClass().getDeclaredField("m");
+            field.setAccessible(true);
+            ((Map<String, String>) field.get(env)).put(key, val);
+        }
     }
 
     @Test
     public void test() throws IOException, GeneralSecurityException, ReflectiveOperationException {
         modifyEnv("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
-
-        Class<?> processEnvironmentClass = Class.forName("java.lang.ProcessEnvironment");
-        Field f = processEnvironmentClass.getDeclaredField("theCaseInsensitiveEnvironment");
-        f.setAccessible(true);
-        Map<String, String> cienv = (Map<String, String>) f.get(null);
-        cienv.put("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
-        System.out.println(System.getenv("TS_DEFAULT_RESPONSE_TIMEOUT"));
-
         ConfigManager.Arguments args = new ConfigManager.Arguments();
         args.setModels(new String[] {"noop_v0.1"});
         ConfigManager.init(args);
