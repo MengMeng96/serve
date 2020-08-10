@@ -1482,10 +1482,7 @@ public class ModelServerTest {
 
         File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
         for (File subFile : snapshotPath.listFiles()) {
-            System.out.println(subFile.toPath());
-            while(subFile.exists()){
-                FileUtils.deleteQuietly(subFile);
-            }
+            FileUtils.deleteQuietly(subFile);
         }
 
         configManagerValidPort.setProperty("inference_address", "https://127.0.0.1:42523");
@@ -1530,10 +1527,7 @@ public class ModelServerTest {
 
         File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
         for (File subFile : snapshotPath.listFiles()) {
-            System.out.println(subFile.toPath());
-            while(subFile.exists()){
-                FileUtils.deleteQuietly(subFile);
-            }
+            FileUtils.deleteQuietly(subFile);
         }
 
         configManagerInvalidPort.setProperty("inference_address", "https://127.0.0.1:65536");

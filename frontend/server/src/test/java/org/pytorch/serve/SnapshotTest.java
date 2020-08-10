@@ -57,10 +57,7 @@ public class SnapshotTest {
 
         File snapshotPath = new File(System.getProperty("LOG_LOCATION"), "config");
         for (File subFile : snapshotPath.listFiles()) {
-            System.out.println(subFile.toPath());
-            while(subFile.exists()){
-                FileUtils.deleteQuietly(subFile);
-            }
+            FileUtils.deleteQuietly(subFile);
         }
 
         ConfigManager.init(new ConfigManager.Arguments());
