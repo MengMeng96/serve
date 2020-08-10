@@ -47,6 +47,7 @@ public class ConfigManagerTest {
     @Test
     public void test() throws IOException, GeneralSecurityException, ReflectiveOperationException {
         modifyEnv("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
+        System.setProperty("TS_DEFAULT_RESPONSE_TIMEOUT", "130");
         System.out.println(System.getenv("TS_DEFAULT_RESPONSE_TIMEOUT"));
         ConfigManager.Arguments args = new ConfigManager.Arguments();
         args.setModels(new String[] {"noop_v0.1"});
