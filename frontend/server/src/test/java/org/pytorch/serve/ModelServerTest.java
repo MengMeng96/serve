@@ -115,7 +115,7 @@ public class ModelServerTest {
         System.out.println("---------------------");
         System.out.println(listInferenceApisResult.replaceAll("(\\\\r|\r\n|\r|\n|\n\r)", "\r"));
         Assert.assertEquals(TestUtils.getResult().replaceAll("(\\\\r|\r\n|\r|\n|\n\r)", "\r")
-                , listInferenceApisResult);
+                , listInferenceApisResult.replaceAll("(\\\\r|\r\n|\r|\n|\n\r)", "\r"));
     }
 
     @Test(
