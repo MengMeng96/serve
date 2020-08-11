@@ -111,9 +111,9 @@ public class ModelServerTest {
         TestUtils.setLatch(new CountDownLatch(1));
         TestUtils.getRoot(channel);
         TestUtils.getLatch().await();
-        System.out.println(TestUtils.getResult().replaceAll("(\r\n|\r|\n|\n\r｜\\r|\)", "\r"));
+        System.out.println(TestUtils.getResult().replaceAll("(\r\n|\r|\n|\n\r｜\\r)", "\r"));
         System.out.println("---------------------");
-        System.out.println(listInferenceApisResult);
+        System.out.println(listInferenceApisResult.replaceAll("(\r\n|\r|\n|\n\r｜\\r)", "\r"));
         Assert.assertEquals(TestUtils.getResult().replaceAll("(\r\n|\r|\n|\n\r)", "\r")
                 , listInferenceApisResult);
     }
