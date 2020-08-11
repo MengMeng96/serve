@@ -115,7 +115,8 @@ public class ModelServerTest {
         TestUtils.getRoot(channel);
         TestUtils.getLatch().await();
 
-        //Assert.assertEquals(TestUtils.getResult(), listInferenceApisResult);
+        Assert.assertEquals(TestUtils.getResult().replaceAll("(\r\n|\r|\n|\n\r)", "\r")
+                , listInferenceApisResult);
     }
 
     @Test(
