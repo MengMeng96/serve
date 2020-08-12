@@ -126,7 +126,7 @@ public class ModelServerTest {
         TestUtils.getLatch().await();
 
         Assert.assertEquals(TestUtils.getResult().replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"),
-                listManagementApisResult);
+                listManagementApisResult.replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"));
     }
 
     @Test(
@@ -139,7 +139,7 @@ public class ModelServerTest {
         TestUtils.getApiDescription(channel);
         TestUtils.getLatch().await();
 
-        Assert.assertEquals(TestUtils.getResult(),
+        Assert.assertEquals(TestUtils.getResult().replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"),
                 listInferenceApisResult.replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"));
     }
 
