@@ -48,7 +48,6 @@ class FormatterPlugin implements Plugin<Project> {
                         if (!file.getName().endsWith(".java")) {
                             continue
                         }
-
                         String src = file.text
                         String formatted = formatter.formatSource(src)
                         formatted = RemoveUnusedImports.removeUnusedImports(formatted, RemoveUnusedImports.JavadocOnlyImports.KEEP)
