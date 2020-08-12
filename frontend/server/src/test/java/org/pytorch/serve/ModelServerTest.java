@@ -153,7 +153,8 @@ public class ModelServerTest {
         TestUtils.describeModelApi(channel, "noop");
         TestUtils.getLatch().await();
 
-        //Assert.assertEquals(TestUtils.getResult(), noopApiResult);
+        Assert.assertEquals(TestUtils.getResult().replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"),
+                noopApiResult.replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"));
     }
 
     @Test(
