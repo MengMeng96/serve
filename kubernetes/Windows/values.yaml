@@ -7,7 +7,7 @@ namespace: torchserve
 torchserve:
   management_port: 8081
   inference_port: 8080
-  pvd_mount: /home/model-server/shared/
+  pvd_mount: /mnt/azure/
   n_gpu: 0
   n_cpu: 1
   memory_limit: 4Gi
