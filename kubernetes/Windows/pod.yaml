@@ -22,3 +22,4 @@ spec:
       volumeMounts:
         - mountPath: "/mnt/azure"
           name: model-store
+
