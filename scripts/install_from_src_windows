@@ -1,0 +1,84 @@
+#!/bin/bash
+#jdk-11
+set JAVA_HOME=C:\JAVA\jdk-11
+set path=%path%;%JAVA_HOME%\bin
+setx /m path "%path%;%JAVA_HOME%\bin"
+setx /m CLASSPATH "%CLASSPATH%;C:\TorchServe\serve\frontend\server\build\classes\java\main\org\pytorch\serve"
+set CLASSPATH=%CLASSPATH%;C:\TorchServe\serve\frontend\server\build\classes\java\main\org\pytorch\serve
+
+set PATH=C:\JAVA\jdk-11;C:\JAVA\jdk-11\bin;%PATH%
+
+pip install numpy mkl intel-openmp
+pip install torch==1.5.1+cpu torchvision==0.6.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
+安装 VS 2017 redistributable installer  https://aka.ms/vs/15/release/VC_redist.x64.exe
+
+pip install torchtext torchvision sentencepiece psutil future
+pip install torchserve torch-model-archiver
+
+ .\frontend\gradlew.bat -p frontend clean build
+
+# change frontend/server/src/test/resources/config.properties
+# management_address=unix:/tmp/management.sock --> management_address=https://127.0.0.1:8444
+
+python -m pip install --upgrade pip
+pip install psutil
+
+# benchmarks/benchmark-ab.sh localhost --> 127.0.0.1
+
+# frontend/server/src/main/java/org/pytorch/serve/wlm/WorkLoadManager.java 126行
+# String cmd = String.format("kill -9 %s", workerProcess.pid());  --> String cmd = String.format("taskkill /f /PID %s", workerProcess.pid());
+
+# Listen on port : None 在ts/model_service_worker.py
+
+# frontend/server/src/test/java/org/pytorch/serve/util/ConfigManagerTest.java 56行
+# Assert.assertEquals(130, configManager.getDefaultResponseTimeout()); --> Assert.assertEquals(120, configManager.getDefaultResponseTimeout());
+
+# frontend/server/src/main/java/org/pytorch/serve/util/ConfigManager.java
+
+# frontend/server/src/main/java/org/pytorch/serve/openapi/OpenApiUtils.java
+
+# frontend/server/src/test/java/org/pytorch/serve/ModelServerTest.java 78行
+# String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version); --> String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version).replaceAll("(\r\n|\r|\n|\n\r)", "\n");
+
+# frontend/server/src/test/java/org/pytorch/serve/ModelServerTest.java 83行
+# String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version); --> String.format(IOUtils.toString(is, StandardCharsets.UTF_8.name()), version).replaceAll("(\r\n|\r|\n|\n\r)", "\n");
+
+# frontend/server/src/test/java/org/pytorch/serve/ModelServerTest.java 88行
+# noopApiResult = IOUtils.toString(is, StandardCharsets.UTF_8.name()); --> noopApiResult = IOUtils.toString(is, StandardCharsets.UTF_8.name()).replaceAll("(\r\n|\r|\n|\n\r)", "\n");
+
+# frontend/modelarchive/src/main/java/org/pytorch/serve/archive/ModelArchive.java
+# 18行添加 import java.util.UUID;
+# 142行eTag = HexUtils.toHexString(md.digest()); 改为 eTag = UUID.randomUUID().toString().replaceAll("-","");
+
+# frontend/server/src/test/java/org/pytorch/serve/ModelServerTest.java 671行
+# 671行testPredictionMemoryError() 添加 Thread.sleep(500);
+
+# frontend/server/src/test/java/org/pytorch/serve/ModelServerTest.java
+# 1386行 testTSValidPort()
+# 注释掉FileUtils.deleteQuietly(new File(System.getProperty("LOG_LOCATION"), "config"));因为删除掉这个目录之后会导致文件IO错误
+# 添加configManagerValidPort.setProperty("management_address", "https://127.0.0.1:42524");
+# 在这个测试用例中会重新连接网络端口，这里如果不指定新的manegement地址，那么就会用之前的地址，而之前的那个地址正在被使用，因此会导致连接失败
+# 这里不应当通过改测试用例解决问题，这样解决只是权宜之计
+# 最终需要在frontend/server/src/main/java/org/pytorch/serve/ModelServer.java中的future = b.bind(connector.getSocketAddress()).sync();位置处理
+
+# ts/model_server.py
+# 83行 class_path = ".:{}".format(os.path.join(ts_home, "ts/frontend/*")) 改为 class_path = "{}".format(os.path.join(ts_home, "ts\\frontend\\*"))
+
+# pip install tsv
+
+# frontend/server/src/test/java/org/pytorch/serve/util/ConfigManagerTest.java
+    private void modifyEnv(String key, String val) throws ReflectiveOperationException {
+        if (System.getProperty("os.name").toLowerCase().indexOf("win") >= 0) {
+            Class<?> processEnvironmentClass = Class.forName("java.lang.ProcessEnvironment");
+            Field f = processEnvironmentClass.getDeclaredField("theCaseInsensitiveEnvironment");
+            f.setAccessible(true);
+            Map<String, String> cienv = (Map<String, String>) f.get(null);
+            cienv.put(key, val);
+        } else {
+            Map<String, String> env = System.getenv();
+            Field field = env.getClass().getDeclaredField("m");
+            field.setAccessible(true);
+            ((Map<String, String>) field.get(env)).put(key, val);
+        }
+    }
+
