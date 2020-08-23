@@ -133,10 +133,12 @@ public class ModelServerTest {
         TestUtils.setLatch(new CountDownLatch(1));
         TestUtils.getRoot(channel);
         TestUtils.getLatch().await();
-
+        System.out.println(TestUtils.getResult());
+        System.out.println("-----");
+        System.out.println(listManagementApisResult);
         Assert.assertEquals(
-                TestUtils.getResult().replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"),
-                listManagementApisResult.replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"));
+                TestUtils.getResult(),
+                listManagementApisResult);
     }
 
     @Test(
@@ -148,10 +150,12 @@ public class ModelServerTest {
         TestUtils.setLatch(new CountDownLatch(1));
         TestUtils.getRoot(channel);
         TestUtils.getLatch().await();
-
+        System.out.println(TestUtils.getResult());
+        System.out.println("-----");
+        System.out.println(listMetricsApisResult);
         Assert.assertEquals(
-                TestUtils.getResult().replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"),
-                listMetricsApisResult.replaceAll("(\\\\r|\r\n|\n|\n\r)", "\r"));
+                TestUtils.getResult(),
+                listMetricsApisResult);
     }
 
     @Test(
