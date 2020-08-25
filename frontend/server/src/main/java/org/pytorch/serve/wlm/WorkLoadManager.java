@@ -155,7 +155,7 @@ public class WorkLoadManager {
         }
     }
 
-    private String getKillCmd(){
+    private String getKillCmd() {
         String operatingSystem = System.getProperty("os.name").toLowerCase();
         String killCMD;
         if (operatingSystem.indexOf("win") >= 0) {
