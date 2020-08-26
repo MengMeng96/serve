@@ -133,9 +133,7 @@ public class ModelServerTest {
         TestUtils.setLatch(new CountDownLatch(1));
         TestUtils.getRoot(channel);
         TestUtils.getLatch().await();
-        Assert.assertEquals(
-                TestUtils.getResult(),
-                listManagementApisResult);
+        Assert.assertEquals(TestUtils.getResult(), listManagementApisResult);
     }
 
     @Test(
