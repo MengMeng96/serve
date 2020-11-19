@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TorchServe REST API &mdash; PyTorch/Serve master documentation</title>
+  <title>Model Zoo &mdash; PyTorch/Serve master documentation</title>
   
 
   
@@ -184,7 +184,7 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">TorchServe REST API</a></li>
+<li><a class="reference internal" href="#">Model Zoo</a></li>
 </ul>
 </div>
             
@@ -225,13 +225,13 @@
       </li>
 
         
-      <li>TorchServe REST API</li>
+      <li>Model Zoo</li>
     
     
       <li class="pytorch-breadcrumbs-aside">
         
             
-            <a href="_sources/rest_api.md.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+            <a href="_sources/model_zoo.md.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
           
         
       </li>
@@ -257,18 +257,206 @@
             <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
               
-  <div class="section" id="torchserve-rest-api">
-<h1>TorchServe REST API<a class="headerlink" href="#torchserve-rest-api" title="Permalink to this headline">¶</a></h1>
-<p>TorchServe uses a RESTful API for both inference and management calls. The API is compliant with the <a class="reference external" href="https://swagger.io/specification/">OpenAPI specification 3.0</a>.
-You can easily generate client side code for Java, Scala, C#, or Javascript by using <a class="reference external" href="https://swagger.io/swagger-codegen/">swagger codegen</a>.</p>
-<p>When TorchServe starts, it starts two web services:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="inference_api.html"><span class="doc">Inference API</span></a></p></li>
-<li><p><a class="reference internal" href="management_api.html"><span class="doc">Management API</span></a></p></li>
-<li><p><a class="reference internal" href="metrics_api.html"><span class="doc">Metrics API</span></a></p></li>
-</ul>
-<p>By default, TorchServe listens on port 8080 for the Inference API and 8081 for the Management API.
-Both APIs are accessible only from localhost by default. To enable access from a remote host, see <a class="reference internal" href="configuration.html"><span class="doc">TorchServe Configuration</span></a>.</p>
+  <div class="section" id="model-zoo">
+<h1>Model Zoo<a class="headerlink" href="#model-zoo" title="Permalink to this headline">¶</a></h1>
+<p>This page lists model archives that are pre-trained and pre-packaged, ready to be served for inference with TorchServe.
+To propose a model for inclusion, please submit a <a class="reference external" href="https://github.com/pytorch/serve/pulls">pull request</a>.</p>
+<p><em>Special thanks to the <a class="reference external" href="https://pytorch.org/">PyTorch</a> community whose Model Zoo and Model Examples were used in generating these model archives.</em></p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Model</th>
+<th>Type</th>
+<th>Dataset</th>
+<th>Size</th>
+<th>Download</th>
+<th>Sample Input</th>
+<th>Model mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlexNet</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>216 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/alexnet.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>Densenet161</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>106 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/densenet161.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>Resnet18</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>41 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/resnet-18.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>VGG11</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>471 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/vgg11_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>Squeezenet 1_1</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>4.4 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/squeezenet1_1.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>MNIST digit classifier</td>
+<td>Image Classification</td>
+<td>MNIST</td>
+<td>4.3 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/mnist_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/mnist/test_data/0.png">0.png</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>Resnet 152</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>214 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/resnet-152-batch_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>Faster RCNN</td>
+<td>Object Detection</td>
+<td>COCO</td>
+<td>148 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/fastrcnn.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/object_detector/persons.jpg">persons.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>MASK RCNN</td>
+<td>Object Detection</td>
+<td>COCO</td>
+<td>158 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/maskrcnn.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/object_detector/persons.jpg">persons.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>Text classifier</td>
+<td>Text Classification</td>
+<td>AG_NEWS</td>
+<td>169 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/my_text_classifier_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/text_classification/sample_text.txt">sample_text.txt</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>FCN Resenet 101</td>
+<td>Image Segmentation</td>
+<td>COCO</td>
+<td>193 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/fcn_resnet_101.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_segmenter/fcn/persons.jpg">persons.jpg</a></td>
+<td>Eager</td>
+</tr>
+<tr>
+<td>AlexNet Scripted</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>216 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/alexnet_scripted.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>Densenet161 Scripted</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>105 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/densenet161_scripted.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>Resnet18 Scripted</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>42 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/resnet-18_scripted.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>VGG11 Scripted</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>471 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/vgg11_scripted.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>Squeezenet 1_1 Scripted</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>4.4 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/squeezenet1_1_scripted.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>MNIST digit classifier Scripted</td>
+<td>Image Classification</td>
+<td>MNIST</td>
+<td>4.3 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/mnist_scripted_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/mnist/test_data/0.png">0.png</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>Resnet 152 Scripted</td>
+<td>Image Classification</td>
+<td>ImageNet</td>
+<td>215 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/resnet-152-scripted_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_classifier/kitten.jpg">kitten.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>Text classifier Scripted</td>
+<td>Text Classification</td>
+<td>AG_NEWS</td>
+<td>169 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/my_text_classifier_scripted_v2.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/text_classification/sample_text.txt">sample_text.txt</a></td>
+<td>Torchscripted</td>
+</tr>
+<tr>
+<td>FCN Resenet 101 Scripted</td>
+<td>Image Segmentation</td>
+<td>COCO</td>
+<td>193 MB</td>
+<td><a href="https://torchserve.pytorch.org/mar_files/fcn_resnet_101_scripted.mar">.mar</a></td>
+<td><a href="https://github.com/pytorch/serve/blob/master/examples/image_segmenter/fcn/persons.jpg">persons.jpg</a></td>
+<td>Torchscripted</td>
+</tr>
+</tbody>
+</table><p>Refer <a class="reference external" href="../examples">example</a> for more details on above models.</p>
 </div>
 
 
@@ -305,7 +493,7 @@ Both APIs are accessible only from localhost by default. To enable access from a
           <div class="pytorch-right-menu" id="pytorch-right-menu">
             <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
               <ul>
-<li><a class="reference internal" href="#">TorchServe REST API</a></li>
+<li><a class="reference internal" href="#">Model Zoo</a></li>
 </ul>
 
             </div>

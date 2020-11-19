@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Torch Model archiver for TorchServe &mdash; PyTorch/Serve master documentation</title>
+  <title>TorchServe on Windows &mdash; PyTorch/Serve master documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -182,27 +182,18 @@
               
             
             
-              <p class="caption"><span class="caption-text">Core APIs</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="inference_api.html">Inference API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="default_handlers.html">TorchServe default inference handlers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging on Torchserve</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#pre-requisites">Pre-requisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#types-of-logs">Types of logs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#modifying-the-behavior-of-the-logs">Modifying the behavior of the logs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#enable-asynchronous-logging">Enable asynchronous logging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="management_api.html">Management API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics on TorchServe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rest_api.html">TorchServe REST API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Advanced configuration</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TorchServe on Windows</a><ul>
+<li><a class="reference internal" href="#contents-of-this-document">Contents of this Document</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#install-from-binaries">Install from binaries</a></li>
+<li><a class="reference internal" href="#install-from-source">Install from source</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">TorchServe Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="server.html">Running the TorchServe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="batch_inference_with_ts.html">Batch Inference with TorchServe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="custom_service.html">Custom Service</a></li>
+</li>
 </ul>
-
+</div>
             
           
         </div>
@@ -241,13 +232,13 @@
       </li>
 
         
-      <li>Torch Model archiver for TorchServe</li>
+      <li>TorchServe on Windows</li>
     
     
       <li class="pytorch-breadcrumbs-aside">
         
             
-            <a href="_sources/model-archiver.rst.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
+            <a href="_sources/torchserve_on_win_native.md.txt" rel="nofollow"><img src="_static/images/view-page-source-icon.svg"></a>
           
         
       </li>
@@ -273,188 +264,81 @@
             <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
              <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
               
-  <div class="section" id="torch-model-archiver-for-torchserve">
-<h1>Torch Model archiver for TorchServe<a class="headerlink" href="#torch-model-archiver-for-torchserve" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="torchserve-on-windows">
+<h1>TorchServe on Windows<a class="headerlink" href="#torchserve-on-windows" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="contents-of-this-document">
 <h2>Contents of this Document<a class="headerlink" href="#contents-of-this-document" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="#overview">Overview</a></p></li>
-<li><p><a class="reference external" href="#installation">Installation</a></p></li>
-<li><p><a class="reference external" href="#torch-model-archiver-command-line-interface">Torch Model Archiver CLI</a></p></li>
-<li><p><a class="reference external" href="#artifact-details">Artifact Details</a></p></li>
+<li><p><a class="reference external" href="#prerequisites">Prerequisites</a></p></li>
+<li><p><a class="reference external" href="#install-from-binaries">Install from binaries</a></p></li>
+<li><p><a class="reference external" href="#install-from-source">Install from source</a></p></li>
 </ul>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference internal" href="#mar-inf">MAR-INF</a></p></li>
-<li><p><a class="reference external" href="#model-name">Model name</a></p></li>
-<li><p><a class="reference external" href="#model-file">Model file</a></p></li>
-<li><p><a class="reference external" href="#serialized-file">Serialized file</a></p></li>
-<li><p><a class="reference internal" href="#handler">Handler</a></p></li>
-</ul>
-</div></blockquote>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="#creating-a-model-archive">Quick Start: Creating a Model Archive</a></p></li>
+<li><p>At present, it has only been certified on windows server 2019 however should work fine on Windows 10.</p></li>
+<li><p>Make sure you are an admin user or have admin rights</p></li>
+<li><p>The instruction given here will use anaconda Powershell terminal to install torchserve</p></li>
+<li><p>Install Anaconda as given <a class="reference external" href="https://docs.anaconda.com/anaconda/install/windows/">here</a></p></li>
+<li><p>Install Git as given <a class="reference external" href="https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-64-bit.exe">here</a></p></li>
+<li><p>Install openjdk11</p>
+<ul>
+<li><p>Download <a class="reference external" href="https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip">openjdk11</a></p></li>
+<li><p>Unzip and edit/add environment variables i.e. PATH and JAVA_HOME
+e.g.</p></li>
+<li><p>Using command line <code class="docutils literal notranslate"><span class="pre">unzip</span> <span class="pre">openjdk-11*_bin.zip</span></code> or using GUI interface</p></li>
+<li><p>Edit system or user profile environment variable <code class="docutils literal notranslate"><span class="pre">PATH</span></code> value and append path <code class="docutils literal notranslate"><span class="pre">&lt;your-openjdk11-path&gt;\bin</span></code> to it</p></li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2>Overview<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>A key feature of TorchServe is the ability to package all model artifacts into a single model archive file. It is a separate command line interface (CLI), <cite>torch-model-archiver</cite>, that can take model checkpoints or model definition file with state*dict, and package them into a <cite>.mar</cite> file. This file can then be redistributed and served by anyone using TorchServe. It takes in the following model artifacts: a model checkpoint file in case of torchscript or a model definition file and a state*dict file in case of eager mode, and other optional assets that may be required to serve the model. The CLI creates a <cite>.mar</cite> file that TorchServe’s server CLI uses to serve the models.</p>
-<p><strong>Important</strong>: Make sure you try the <a class="reference external" href="#creating-a-model-archive">Quick Start: Creating a Model Archive</a> tutorial for a short example of using <cite>torch-model-archiver</cite>.</p>
-<p>The following information is required to create a standalone model archive:</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="#model-name">Model name</a></p></li>
-<li><p><a class="reference external" href="#model-file">Model file</a></p></li>
-<li><p><a class="reference external" href="#serialized-file">Serialized file</a></p></li>
-</ol>
+<div class="section" id="install-from-binaries">
+<h2>Install from binaries<a class="headerlink" href="#install-from-binaries" title="Permalink to this headline">¶</a></h2>
+<p>NOTE At present, wheels for windows are not available on PyPi. However following steps can also be used if you have prebuilt torchserve wheel for windows.</p>
+<ul class="simple">
+<li><p>Start ‘Anaconda Powershell Prompt’ (APP) as Admin User i.e. By right click on APP and run following commands</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/pytorch/serve.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">serve</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">-r</span> <span class="pre">requirements_cpu.txt</span></code></p></li>
+<li><p>For local wheel file</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&lt;your-torchserve-wheel-file-name&gt;.whl</span></code></p></li>
+</ul>
+</li>
+<li><p>For PyPi package (N/A at present)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">torchserve</span> <span class="pre">torch-model-archiver</span></code></p></li>
+</ul>
+</li>
+<li><p>Start torchserve <code class="docutils literal notranslate"><span class="pre">torchserve.exe</span> <span class="pre">--start</span> <span class="pre">--model-store</span> <span class="pre">&lt;path-to-model-store&gt;</span></code></p></li>
+<li><p>For next steps refer <a class="reference external" href="https://github.com/pytorch/serve#serve-a-model">Serving a model</a></p></li>
+</ul>
 </div>
-<div class="section" id="id3">
-<h2>Installation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>Install torch-model-archiver as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/pytorch/serve.git
-
-<span class="nb">cd</span> serve/model-archiver
-
-pip install .
-</pre></div>
+<div class="section" id="install-from-source">
+<h2>Install from source<a class="headerlink" href="#install-from-source" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Add system or user profile environment variable name <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> and value as <code class="docutils literal notranslate"><span class="pre">&lt;your-openjdk11-path&gt;</span></code></p></li>
+<li><p>Install <a class="reference external" href="https://support.microsoft.com/en-in/help/2977003/the-latest-supported-visual-c-downloads">Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019</a></p>
+<p>NOTE ensure that you have restarted system after install above Visual C++ components</p>
+</li>
+<li><p>Start ‘Anaconda Powershell Prompt’ (APP) as Admin User i.e. By right click on APP and run following commands</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/pytorch/serve.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">click</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">serve</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">.\scripts\install_from_src.py</span></code></p></li>
+<li><p>Refer <a class="reference external" href="https://github.com/pytorch/serve#install-torchserve-for-development">Install torchserve for development</a></p></li>
+</ul>
 </div>
-</div>
-<div class="section" id="torch-model-archiver-command-line-interface">
-<h2>Torch Model Archiver Command Line Interface<a class="headerlink" href="#torch-model-archiver-command-line-interface" title="Permalink to this headline">¶</a></h2>
-<p>Now let’s cover the details on using the CLI tool: <cite>model-archiver</cite>.</p>
-<p>Here is an example usage with the squeezenet_v1.1 model archive following the example in the <a class="reference external" href="https://github.com/pytorch/serve/blob/master/examples/README.md">examples README</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>torch-model-archiver --model-name densenet161 --version <span class="m">1</span>.0 --model-file examples/image*classifier/densenet*161/model.py --serialized-file densenet161-8d451a50.pth --extra-files examples/image*classifier/index*to*name.json --handler image*classifier
-</pre></div>
-</div>
-</div>
-<div class="section" id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ torch-model-archiver -h
-usage: torch-model-archiver [-h] --model-name MODEL_NAME  --version MODEL_VERSION_NUMBER
-                                        --model-file MODEL_FILE_PATH --serialized-file MODEL_SERIALIZED_PATH
-                                        --handler HANDLER [--runtime {python,python2,python3}]
-                                        [--export-path EXPORT_PATH] [-f]
-
-Model Archiver Tool
-
-optional arguments:
--h, --help            show this help message and exit
-
---model-name MODEL_NAME
-        Exported model name. Exported file will be named as
-        model-name.mar and saved in current working directory
-        if no --export-path is specified, else it will be
-        saved under the export path
-
---serialized-file SERIALIZED_FILE
-        Path to .pt or .pth file containing state_dict in
-        case of eager mode or an executable ScriptModule
-        in case of TorchScript.
-
---model-file MODEL_FILE
-        Path to python file containing model architecture.
-        This parameter is mandatory for eager mode models.
-        The model architecture file must contain only one
-        class definition extended from torch.nn.modules.
-
---handler HANDLER
-        TorchServe&#39;s default handler name  or handler python
-        file path to handle custom TorchServe inference logic.
-
---source-vocab SOURCE_VOCAB
-        Vocab file for source language required for text
-        based models
-
---extra-files EXTRA_FILES
-        Comma separated path to extra dependency files.
-
---runtime {python,python2,python3}
-        The runtime specifies which language to run your
-        inference code on. The default runtime is
-        RuntimeType.PYTHON. At the present moment we support
-        the following runtimes python, python2, python3
-
---export-path EXPORT_PATH
-        Path where the exported .mar file will be saved. This
-        is an optional parameter. If --export-path is not
-        specified, the file will be saved in the current
-        working directory.
-
---archive-format {tgz,default}
-        The format in which the model artifacts are archived.
-        &quot;tgz&quot;: This creates the model-archive in &lt;model-name&gt;.tar.gz format.
-        If platform hosting requires model-artifacts to be in &quot;.tar.gz&quot;
-        use this option.
-        &quot;no-archive&quot;: This option creates an non-archived version of model artifacts
-        at &quot;export-path/{model-name}&quot; location. As a result of this choice,
-        MANIFEST file will be created at &quot;export-path/{model-name}&quot; location
-        without archiving these model files
-        &quot;default&quot;: This creates the model-archive in &lt;model-name&gt;.mar format.
-        This is the default archiving format. Models archived in this format
-        will be readily hostable on TorchServe.
-
--f, --force
-        When the -f or --force flag is specified, an existing
-        .mar file with same name as that provided in --model-
-        name in the path specified by --export-path will
-        overwritten
-
--v, --version
-        Model&#39;s version.
-</pre></div>
-</div>
-</div>
-<div class="section" id="id4">
-<h2>Artifact Details<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="mar-inf">
-<h3>MAR-INF<a class="headerlink" href="#mar-inf" title="Permalink to this headline">¶</a></h3>
-<p><strong>MAR-INF</strong> is a reserved folder name that will be used inside <cite>.mar</cite> file. This folder contains the model archive metadata files. Users should avoid using <strong>MAR-INF</strong> in their model path.</p>
-</div>
-<div class="section" id="runtime">
-<h3>Runtime<a class="headerlink" href="#runtime" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id5">
-<h3>Model name<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>A valid model name must begin with a letter of the alphabet and can only contains letters, digits, underscores <cite>_</cite>, dashes <cite>-</cite> and periods <cite>.</cite>.</p>
-<p><strong>Note</strong>: The model name can be overridden when you register the model with <a class="reference external" href="https://pytorch.org/serve/management_api#id1">Register Model API</a>.</p>
-</div>
-<div class="section" id="id6">
-<h3>Model file<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>A model file should contain the model architecture. This file is mandatory in case of eager mode models.</p>
-</div>
-<div class="section" id="id7">
-<h3>Serialized file<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>A serialized file (.pt or .pth) should be a checkpoint in case of torchscript and state_dict in case of eager mode.</p>
-</div>
-<div class="section" id="handler">
-<h3>Handler<a class="headerlink" href="#handler" title="Permalink to this headline">¶</a></h3>
-<p>Handler can be TorchServe’s inbuilt handler name or path to a py to handle custom TorchServe inference logic. TorchServe supports following handlers out or box:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">image_classifier</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">object_detector</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">text_classifier</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">image_segmenter</span></code></p></li>
-</ol>
-<p>For more details refer <a class="reference external" href="https://pytorch.org/serve/default_handlers.html">default handler documentation</a></p>
-</div>
-</div>
-<div class="section" id="creating-a-model-archive">
-<h2>Creating a Model Archive<a class="headerlink" href="#creating-a-model-archive" title="Permalink to this headline">¶</a></h2>
-<p><strong>1. Download the torch model archiver source</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/pytorch/serve.git
-</pre></div>
-</div>
-<p><strong>2. Package your model</strong></p>
-<p>With the model artifacts available locally, you can use the <cite>torch-model-archiver</cite> CLI to generate a <cite>.mar</cite> file that can be used to serve an inference API with TorchServe.</p>
-<p>In this next step we’ll run <cite>torch-model-archiver</cite> and tell it our model’s name is <cite>densenet_161</cite> and its version is <cite>1.0</cite> with the <cite>model-name</cite> and <cite>version</cite> parameter respectively and that it will use TorchServe’s default <cite>image_classifier</cite> handler with the <cite>handler</cite> argument . Then we’re giving it the <cite>model-file</cite> and <cite>serialized-file</cite> to the model’s assets.</p>
-<p>For torchscript:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>torch-model-archiver --model-name densenet*161 --version <span class="m">1</span>.0 --serialized-file model.pt --handler image*classifier
-</pre></div>
-</div>
-<p>For eagermode:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>torch-model-archiver --model-name densenet*161 --version <span class="m">1</span>.0 --model-file model.py --serialized-file model.pt --handler image*classifier
-</pre></div>
-</div>
-<p>This will package all the model artifacts files and output <cite>densenet_161.mar</cite> in the current working directory. This <cite>.mar</cite> file is all you need to run TorchServe, serving inference requests for a simple image recognition API. Go back to the <a class="reference external" href="https://github.com/pytorch/serve/blob/master/README.md#serve-a-model">Serve a Model tutorial</a> and try to run this model archive that you just created!</p>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If you are building from source then you may have to change the port number for inference, management and metrics apis as specified in <code class="docutils literal notranslate"><span class="pre">frontend/server/src/test/resources/config.properties</span></code>,
+all files in <code class="docutils literal notranslate"><span class="pre">frontend/server/src/test/resources/snapshot/*</span></code> and <code class="docutils literal notranslate"><span class="pre">frontend/server/src/main/java/org/pytorch/serve/util/ConfigManager.java</span></code></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">curl</span></code> command fails to execute then run following command on APP (anaconda powershell promopt)
+<code class="docutils literal notranslate"><span class="pre">Remove-item</span> <span class="pre">alias:curl</span></code>
+Refer this <a class="reference external" href="https://stackoverflow.com/questions/25044010/running-curl-on-64-bit-windows">SO answer</a> for details.</p></li>
+</ul>
 </div>
 </div>
 
@@ -492,22 +376,12 @@ optional arguments:
           <div class="pytorch-right-menu" id="pytorch-right-menu">
             <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
               <ul>
-<li><a class="reference internal" href="#">Torch Model archiver for TorchServe</a><ul>
+<li><a class="reference internal" href="#">TorchServe on Windows</a><ul>
 <li><a class="reference internal" href="#contents-of-this-document">Contents of this Document</a></li>
-<li><a class="reference internal" href="#id1">Overview</a></li>
-<li><a class="reference internal" href="#id3">Installation</a></li>
-<li><a class="reference internal" href="#torch-model-archiver-command-line-interface">Torch Model Archiver Command Line Interface</a></li>
-<li><a class="reference internal" href="#arguments">Arguments</a></li>
-<li><a class="reference internal" href="#id4">Artifact Details</a><ul>
-<li><a class="reference internal" href="#mar-inf">MAR-INF</a></li>
-<li><a class="reference internal" href="#runtime">Runtime</a></li>
-<li><a class="reference internal" href="#id5">Model name</a></li>
-<li><a class="reference internal" href="#id6">Model file</a></li>
-<li><a class="reference internal" href="#id7">Serialized file</a></li>
-<li><a class="reference internal" href="#handler">Handler</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#creating-a-model-archive">Creating a Model Archive</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#install-from-binaries">Install from binaries</a></li>
+<li><a class="reference internal" href="#install-from-source">Install from source</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>
@@ -529,8 +403,8 @@ optional arguments:
          <script src="_static/underscore.js"></script>
          <script src="_static/doctools.js"></script>
          <script src="_static/language_data.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"></script>
          <script src="_static/katex_autorenderer.js"></script>
      
 
